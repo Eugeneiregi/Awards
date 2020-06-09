@@ -5,4 +5,4 @@ from django.urls import path
 
 
 def home(request):
-  return render (request, 'home.html')
+  return render (request, 'base.html')
