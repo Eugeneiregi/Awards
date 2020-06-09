@@ -1,3 +1,10 @@
 venv/
 *.pyc
 .env
+/_pycache_
+.vscode
+Award/_pycache_/
+Awwards/_pycache_/
+Award/migrations/_pycache_/
+Awwards/_pycache_
+media
