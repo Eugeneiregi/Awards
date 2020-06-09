@@ -58,8 +58,45 @@ def index(request):
         }
     return render(request, 'registration/signup.html', {'form': form})
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def profile(request, username):
     return render(request, 'profile/profile.html')
 
 
+
+# @login_required(login_url='login')
+def edit_profile(request, username):
+    user = User.objects.get(username=username)
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and prof_form.is_valid():
+            user_form.save()
+            prof_form.save()
+            return redirect('profile', user.username)
+    else:
+        uform = UpdateUserForm(instance=request.user)
+        pform = UpdateUserProfileForm(instance=request.user.profile)
+    params = {
+        'user_form': uform,
+        'prof_form': pform,
+    }
+    return render(request, 'main/edit.html', params)
+
+def upload(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+    else:
+        form = PostForm()
+
+    try:
+        posts = Project.objects.all()
+        print(posts)
+    except Project.DoesNotExist:
+        posts = None
+        return redirect('home')
+    return render(request, 'main/upload.html', {'posts': posts, 'form': form})
