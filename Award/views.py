@@ -100,3 +100,21 @@ def upload(request):
         posts = None
         return redirect('home')
     return render(request, 'main/upload.html', {'posts': posts, 'form': form})
+
+
+def rate(request):
+    ratings = Rate.objects.all()
+    rate_params = {
+        'ratings': ratings
+    }
+
+    return render('main/view_project.html', rate_params)
+
+
+def profile_view(request):
+    profile = Profile.get_profile_data()
+    profile_data = {
+        'profile': profile
+    }
+
+    return render('profile/profile.html', profile_data)
