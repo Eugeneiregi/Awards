@@ -9,13 +9,13 @@ from .forms import *
 
 def home(request):
   current_user = request.user
-  project_images = Project.fetch_all_images()
+  project_images = Project.objects.all()
   image_params = {
     'all_images':project_images,
     'current': current_user,
   }
-  return render (request, 'base.html')
-  return render(request, "main/index.html", image_params)
+  return render (request, 'main/home.html', image_params)
+  
 
 
 

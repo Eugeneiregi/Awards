@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="baner-info-w3ls text-left">
-            <h1 id="heading"><a href="/">Awwards</a></h1>
+            <h1 id="heading"><a href="/">Awards</a></h1>
             <h6 class="mx-auto mt-4" id="heading-small">A
                 collection of my favourite projects </h6> <a class="btn btn-primary mt-lg-5 mt-3 agile-link-bnr scroll"
                                                              href="#about" role="button">Explore</a>
@@ -44,7 +44,7 @@
                 <!--</div> -->
             </form>
 
-            <p class="main_p mt-4 mb-4 pt-2 text-center mx-auto">Search projects</p>
+            <p class="main_p mt-4 mb-4 pt-2 text-center mx-auto" >Search projects</p>
         </div>
     </div>
 </section>
@@ -65,14 +65,19 @@
                 {%for image in all_images %}
 
                 <div class="col-md-4 gal-img">
-                    <a href="#gal1"><img src="{{image.image.url}}" alt="gallery img" class="img-fluid"></a>
+                    {% if image.image %}
+                    <img src="{{image.image.url}}" alt="">
+                    {% else %}
+                    <img src="https://images.unsplash.com/photo-1591728402751-851d8733e60d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="">
+                     {% endif %}
+
                     <div class="mr-3 ml-3">
-                        <p class="mt-2">{{image.title}}</p>
+                        <p class="btn btn-success">{{image.title}}</p>
                         <div class="user-details">
                             <p>from location</p>
                             <p> date</p>
-
                         </div>
+                        <div class="btn btn-secondary">view site{{image.url}}</div>
                         <div class="p-and-t-row">
                             <div class="prof-row">
                                 <img src="" alt="">

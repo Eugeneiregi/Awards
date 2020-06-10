@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Award',
-    
     'bootstrap4',
     'crispy_forms',
     
@@ -143,11 +142,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-
-# UPLOADCARE = {
-#     'pub_key': config('pub_key'),
-#     'secret': config('secret'),
-# }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
