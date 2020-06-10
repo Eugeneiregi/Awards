@@ -40,7 +40,7 @@ def index(request):
 
 
 
-    def signup(request):
+def signup(request):
     global register_form
     if request.method == 'POST':
         form = SignupForm(request.POST)
