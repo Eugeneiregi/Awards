@@ -77,7 +77,7 @@
                             <p>from location</p>
                             <p> date</p>
                         </div>
-                        <div class="btn btn-secondary">view site{{image.url}}</div>
+                        <a href="{% url 'project' project_id=image.id %}" class="btn btn-secondary">View Project</a>
                         <div class="p-and-t-row">
                             <div class="prof-row">
                                 <img src="" alt="">
